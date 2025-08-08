@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/profile.css">
+    <title>Резюме</title>
+</head>
+<body>
+    <div id="aboutMe">
+        <img src="{{ photo_url }}" alt="Фото пользователя" id="myPhoto">
+        <div id="textAboutMe">
+            <h1>{{ name }} {{ surname }}</h1>
+            <p class="myDescription">{{ about_profile }}</p>
+            <h2>Мои данные</h2>
+            <p>Мой ник: <span class="highlight">{{ login }}</span></p>
+            <p>Дата рождения: <span class="highlight">{{ date_of_bithday }}</span></p>
+            <p>Телефон: <span class="highlight">{{ phone }}</span></p>
+            <p>Почта: <span class="highlight">{{ mail }}</span></p>
+            <p>Логин в тг: <span class="highlight">{{ tg_login }}</span></p>
+        </div>
+    </div>
+    <div id="skills"></div>
+    <button id="testButton">Test API</button>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="/static/profile.js" type="module"></script>
+    <script src="/static/api/apiMain.js" type="module"></script>
+</body>
+</html>
