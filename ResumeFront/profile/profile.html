@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/profile/profile.css">
+    <title>Резюме</title>
+</head>
+<body>
+    <!-- контаинер о пользователе -->
+    <div id="aboutMe">
+        <img src="{{ photo_url }}" alt="Фото пользователя" id="myPhoto">
+        <div id="textAboutMe">
+            <h1>{{ name }} {{ surname }}</h1>
+            <p class="myDescription">{{ about_profile }}</p>
+            <h2>Мои данные</h2>
+            <p>Мой ник: <span class="highlight" id="login">{{ login }}</span></p>
+            <p>Дата рождения: <span class="highlight" id="date_of_bithday">{{ date_of_bithday }}</span></p>
+            <p>Телефон: <span class="highlight" id="phone">{{ phone }}</span></p>
+            <p>Почта: <span class="highlight" id="mail">{{ mail }}</span></p>
+            <p>Логин в тг: <span class="highlight" id="tg_login">{{ tg_login }}</span></p>
+        </div>
+    </div>
+
+    <!-- div для отрисовки скилов -->
+    <div id="skills-container"></div>
+
+    <!-- подключения -->
+    <script src="https://unpkg.com/vue"></script>
+    <script src="/static/profile/profile.js" type="module"></script>
+    <script src="/static/api/apiMain.js" type="module"></script>
+</body>
+</html>
+

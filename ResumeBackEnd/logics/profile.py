@@ -50,16 +50,18 @@ class Profile:
 
         """Возвращает скилы полльзовтеля в формате JSON"""
 
-        data = db.get_skills(login)[0]
+        data = db.get_skills(login)
 
-        if data is None:
+        if data[0] is None:
             return {'error':'profile is invalid'}
 
-        skills = {
-            'skill':data[0],
-            'level':data[1],
-            'related_skills':data[2]
-        }
+        skills = {}
+
+        for skill in data:
+            skills[skill[0]] = {
+                'level':skill[1],
+                'related_skills':skill[2]
+            }
 
         return skills
 

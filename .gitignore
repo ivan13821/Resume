@@ -1,0 +1,9 @@
+.idea/
+
+ResumeFront/node_modules/
+ResumeFront/profile_photo/
+
+ResumeBack/.venv/
+ResumeBack/.idea/
+
+**__pycache__/**

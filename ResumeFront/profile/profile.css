@@ -1,0 +1,195 @@
+body {
+  background-image: linear-gradient(to top, #2e1753, #1f1746, #131537, #0d1028, #050819);
+  margin: 0; /* Убираем отступы по умолчанию */
+  min-height: 100vh; /* Занимаем всю высоту экрана */
+  display: flex;
+  justify-content: center; /* Центрируем по горизонтали */
+  color: rgb(235, 221, 221);
+  flex-direction: column;
+  align-items: center; 
+}
+
+p {
+  margin: 10px 0; /* Отступы между параграфами */
+}
+h1, h2{
+  margin-top: 30px;
+  margin-bottom: 0px;
+}
+
+/* --------------------------------------------------------------------------------------------------- */
+#aboutMe {
+  top: 50px;
+  display: flex;
+  top: 30px;
+  width: 1500px;
+  height: 540px;
+  border: 3px solid black;
+  border-radius: 30px;
+  padding: 20px; 
+  background: rgb(36, 36, 36); 
+}
+
+.myDescription {
+  font-weight: 400;
+  font-size: 20px;
+}
+
+#myPhoto {
+  border-radius: 10px;
+  object-fit: cover;
+  width: 350px;
+  height: 500px;
+  margin: 20px;
+}
+
+#textAboutMe {
+  top: 0;
+  font-size: 18px;
+}
+
+.nameSurname {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.highlight {
+  font-weight: 600;
+  font-size: 20px;
+}
+
+/* --------------------------------------------------------------------------------------------------- */
+
+
+.modal-window {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.25);
+  font-size: 18px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  color: black;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+  &:target {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+  & > div {
+    width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 2em;
+    background: white;
+  }
+  header {
+    font-weight: bold;
+  }
+  h1 {
+    font-size: 150%;
+    margin: 0 0 15px;
+  }
+}
+
+.modal-close {
+  color: #aaa;
+  line-height: 50px;
+  font-size: 80%;
+  position: absolute;
+  text-align: center;
+  width: 30px;
+  height: 30px;
+  top: 10px;
+  right: 5px;
+  text-decoration: none;
+  border-radius: 0;
+  border: 0;
+  background-color: white;
+  &:hover {
+    color: black;
+  }
+}
+
+/* Demo Styles */
+
+.container {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.modal-window {
+  & > div {
+    border-radius: 1rem;
+  }
+}
+
+.modal-window div:not(:last-of-type) {
+  margin-bottom: 15px;
+}
+
+.logo {
+  max-width: 150px;
+  display: block;
+}
+
+
+/*  */
+
+#skills-container {
+  display: flex;
+  width: 1500px;
+  border: 3px solid black;
+  border-radius: 30px;
+  margin-top: 30px;
+  padding: 20px; 
+  background: rgb(36, 36, 36); 
+  flex-wrap: wrap;
+  align-content: space-around;
+  margin-bottom: 30px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 170px;
+  height: 60px;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin: 30px;
+}
+
+.btn {
+  font-size: 20px;
+  font-weight: 500; /* Исправляем 15px на 500 */
+  font-family: "Gill Sans", sans-serif;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(118, 110, 194);
+  border-radius: 0.5rem;
+  text-decoration: none;
+  color: rgb(0, 0, 0); /* Добавляем цвет текста */
+  border: none; /* Убираем стандартные стили кнопки */
+  cursor: pointer;
+}
+
+.container:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+  background-color: rgb(98, 90, 174); /* Темнее при наведении */
+}
