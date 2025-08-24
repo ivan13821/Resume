@@ -66,6 +66,14 @@ class Database:
 
         """Возвращает скилы пользователя"""
 
-        self.execute_query(f"select skill, level, related_skills from skills where login='{login}'")
+        self.execute_query(f"select skill, level, more from skills where login='{login}'")
+
+        return self.cur.fetchall()
+
+    def get_books(self, login):
+
+        """Возвращает скилы пользователя"""
+
+        self.execute_query(f"select name, author, more from books where login='{login}'")
 
         return self.cur.fetchall()

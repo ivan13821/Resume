@@ -60,10 +60,32 @@ class Profile:
         for skill in data:
             skills[skill[0]] = {
                 'level':skill[1],
-                'related_skills':skill[2]
+                'more':skill[2]
             }
 
         return skills
+
+
+    @staticmethod
+    def get_books(login):
+
+        """Возвращает книги прочитанные пользователем"""
+
+        data = db.get_books(login)
+
+        if data[0] is None:
+            return {'error':'profile is invalid'}
+
+        books = {}
+
+        for book in data:
+            books[book[0]]= {
+                    "name":book[0],
+                    "author":book[1],
+                    "more":book[2]
+                 }
+
+        return books
 
 
 

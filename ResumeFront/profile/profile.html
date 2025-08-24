@@ -13,6 +13,7 @@
         <div id="textAboutMe">
             <h1>{{ name }} {{ surname }}</h1>
             <p class="myDescription">{{ about_profile }}</p>
+            <br>
             <h2>Мои данные</h2>
             <p>Мой ник: <span class="highlight" id="login">{{ login }}</span></p>
             <p>Дата рождения: <span class="highlight" id="date_of_bithday">{{ date_of_bithday }}</span></p>
@@ -23,7 +24,22 @@
     </div>
 
     <!-- div для отрисовки скилов -->
-    <div id="skills-container"></div>
+    <div class="all-container">
+        <h1 class="header-container">Навыки</h1>
+        <div class="container-level2", id="skills-container"></div>
+    </div>
+
+    <!-- div для отрисовки опыта -->
+    <div class="all-container">
+        <h1 class="header-container">Опыт работы</h1>
+        <div class="container-level2", id="experience-container"></div>
+    </div>
+
+    <!-- div для отрисовки скилов -->
+    <div class="all-container">
+        <h1 class="header-container">Прочитанные книги</h1>
+        <div class="container-level2", id="books-container"></div>
+    </div>
 
     <!-- подключения -->
     <script src="https://unpkg.com/vue"></script>

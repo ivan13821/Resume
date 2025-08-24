@@ -1,10 +1,30 @@
+
+
+/* Объявляем переменные для использования */
+:root {
+  --text-color: rgb(235, 221, 221);
+  --text-buttons-color: black;
+  --border-color: black;
+  --background-color-1: #0d062e;
+  --background-color-2: #210e41;
+  --background-color-3: #3f1188;
+  --background-color-4: #5516b9;
+}
+
+
+
+
+
+
+
+
 body {
-  background-image: linear-gradient(to top, #2e1753, #1f1746, #131537, #0d1028, #050819);
+  background-image: linear-gradient(to top, var(--background-color-4), var(--background-color-3), var(--background-color-2), var(--background-color-1));
   margin: 0; /* Убираем отступы по умолчанию */
   min-height: 100vh; /* Занимаем всю высоту экрана */
   display: flex;
   justify-content: center; /* Центрируем по горизонтали */
-  color: rgb(235, 221, 221);
+  color: var(--text-color);
   flex-direction: column;
   align-items: center; 
 }
@@ -24,10 +44,11 @@ h1, h2{
   top: 30px;
   width: 1500px;
   height: 540px;
-  border: 3px solid black;
+  border: 3px solid var(--border-color);
   border-radius: 30px;
   padding: 20px; 
   background: rgb(36, 36, 36); 
+  margin-bottom: 30px;
 }
 
 .myDescription {
@@ -45,7 +66,7 @@ h1, h2{
 
 #textAboutMe {
   top: 0;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .nameSurname {
@@ -55,7 +76,7 @@ h1, h2{
 
 .highlight {
   font-weight: 600;
-  font-size: 20px;
+  font-size: 23px;
 }
 
 /* --------------------------------------------------------------------------------------------------- */
@@ -144,12 +165,18 @@ h1, h2{
 
 /*  */
 
-#skills-container {
+
+.header-container {
+  display: flex;
+  margin-left: 30px;
+}
+
+
+.all-container {
   display: flex;
   width: 1500px;
-  border: 3px solid black;
+  border: 3px solid var(--border-color);
   border-radius: 30px;
-  margin-top: 30px;
   padding: 20px; 
   background: rgb(36, 36, 36); 
   flex-wrap: wrap;
@@ -157,11 +184,19 @@ h1, h2{
   margin-bottom: 30px;
 }
 
+.container-level2{
+  display: flex;
+  width: 1500px;
+  background: rgb(36, 36, 36); 
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 170px;
+  min-width: 170px;
   height: 60px;
   border-radius: 0.5rem;
   cursor: pointer;
@@ -170,19 +205,20 @@ h1, h2{
 
 .btn {
   font-size: 20px;
-  font-weight: 500; /* Исправляем 15px на 500 */
+  font-weight: 500; 
   font-family: "Gill Sans", sans-serif;
   display: flex;
   align-items: center; 
   justify-content: center;
   width: 100%;
   height: 100%;
-  background-color: rgb(118, 110, 194);
+  background-color: var(--background-color-4);
   border-radius: 0.5rem;
   text-decoration: none;
-  color: rgb(0, 0, 0); /* Добавляем цвет текста */
-  border: none; /* Убираем стандартные стили кнопки */
+  color: rgb(0, 0, 0);
+  border: 1px solid var(--border-color);
   cursor: pointer;
+  color: var(--text-buttons-color);
 }
 
 .container:hover {
@@ -191,5 +227,5 @@ h1, h2{
 }
 
 .btn:hover {
-  background-color: rgb(98, 90, 174); /* Темнее при наведении */
+  background-color: rgb(83, 122, 173); /* Темнее при наведении */
 }

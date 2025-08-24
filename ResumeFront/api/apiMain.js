@@ -1,14 +1,13 @@
 
 
 const DEFAULT_URL = "http://127.0.0.1:8000/";
-const get_skills = "profile_get_skills/";
 
 export class Api {
 
     // функция для работы с api
-    static async getSkills(login) {
+    static async getData(login, url) {
         try {
-        const response = await fetch(`${DEFAULT_URL}${get_skills}${login}`);
+        const response = await fetch(`${DEFAULT_URL}${url}${login}`);
         
         // Проверяем статус ответа
         if (!response.ok) {
