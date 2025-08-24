@@ -19,7 +19,6 @@ async function createButtons(containerId, data) {
     const container = document.getElementById(containerId);
     container.innerHTML = '';
     let more;
-    console.log(data)
 
     Object.entries(data).forEach(([head, body]) => {
         const modalId = `modal-$-${head.toLowerCase()}`;

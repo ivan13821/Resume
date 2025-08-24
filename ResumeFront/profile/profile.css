@@ -61,9 +61,18 @@ h1, h2{
   margin-bottom: 30px;
 }
 
+#myVision {
+  display: flex;
+  color: var(--text-color);
+  margin-left: auto;
+  width: 500px;
+  justify-content: right;
+  flex-direction: column;
+}
+
 .myDescription {
   font-weight: 400;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 #myPhoto {
@@ -74,9 +83,17 @@ h1, h2{
   margin: 20px;
 }
 
-#textAboutMe {
+.headers {
+  font-size: 50px;
+  background: linear-gradient(135deg, var(--text-color), var(--background-color-4));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.textAboutMe {
   top: 0;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .nameSurname {
@@ -179,6 +196,10 @@ h1, h2{
 .header-container {
   display: flex;
   margin-left: 30px;
+  background: linear-gradient(135deg, var(--text-color), var(--background-color-4));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 
