@@ -72,8 +72,33 @@ class Database:
 
     def get_books(self, login):
 
-        """Возвращает скилы пользователя"""
+        """Возвращает книги прочитанные пользователем пользователя"""
 
         self.execute_query(f"select name, author, more from books where login='{login}'")
+
+        return self.cur.fetchall()
+
+
+    def get_experience(self, login):
+
+        """Возвращает опыт работы пользователя"""
+
+        self.execute_query(f"select company, more from experience where login='{login}'")
+
+        return self.cur.fetchall()
+
+    def get_works(self, login):
+
+        """Возвращает опыт работы пользователя"""
+
+        self.execute_query(f"select name, more from my_works where login='{login}'")
+
+        return self.cur.fetchall()
+
+    def get_education(self, login):
+
+        """Возвращает опыт работы пользователя"""
+
+        self.execute_query(f"select name, more from education where login='{login}'")
 
         return self.cur.fetchall()

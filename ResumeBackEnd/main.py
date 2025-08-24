@@ -59,9 +59,23 @@ async def profile(login, request: Request):
 async def profile(login, request: Request):
     """Передает информацию о профиле пользователя"""
 
-    data = Profile.get_skills(login)
+    data = Profile.get_experience(login)
     return data
 
+
+@app.get("/profile_get_works/{login}")
+async def profile(login, request: Request):
+    """Передает информацию о профиле пользователя"""
+
+    data = Profile.get_works(login)
+    return data
+
+@app.get("/profile_get_education/{login}")
+async def profile(login, request: Request):
+    """Передает информацию о профиле пользователя"""
+
+    data = Profile.get_education(login)
+    return data
 
 
 

@@ -25,11 +25,19 @@ async function createButtons(containerId, data) {
         const modalId = `modal-$-${head.toLowerCase()}`;
         const userElement = document.createElement('div');
         userElement.className = 'user-skill'
+
+        // создании надписи внутри окна
         if (Array.isArray(body.more)) {
-            more = body.more ? body.more.join(', ') : 'Нет информации';
+            if (head === 'Еще') {
+                more = `Другии технологии: <b>${body.more ? body.more.join(', ') : 'Нет информации'}</b>`;
+            } else {
+                more = `Связанные технологии: <b>${body.more ? body.more.join(', ') : 'Нет информации'}</b>`;
+            }
         } else {
-            more = body.more;
+            more = body.more ? body.more : 'Нет информации';
         }
+
+        // создание контаинера 
         userElement.innerHTML = `
         <div class="container">
             <button class="btn" data-modal="${modalId}">${head}</button>
@@ -81,16 +89,30 @@ async function createSkills(login) {
     createButtons('skills-container', data, 'Навыки');
 }
 
+// функция получает данные по прочитанным книгам и делегирует отрисовку кнопок
 async function createBooks(login) {
     let data = await api.getData(login, "profile_get_books/");
     createButtons('books-container', data);
 }
 
-// async function createExperience(login) {
-//     let data = await api.getSkills(login);
-//     createButtons('skills-container', data);
-// }
+// функция получает данные по опыту пользователя и делегирует отрисовку кнопок
+async function createExperience(login) {
+    let data = await api.getData(login, "profile_get_experience/");
+    createButtons('experience-container', data);
+}
 
+// функция получает данные по пет-проектам и делегирует отрисовку кнопок
+async function createWorks(login) {
+    let data = await api.getData(login, "profile_get_works/");
+    createButtons('works-container', data);
+}
+
+
+// функция получает данные по образованию и делегирует отрисовку кнопок
+async function createEducation(login) {
+    let data = await api.getData(login, "profile_get_education/");
+    createButtons('education-container', data);
+}
 
 
 
@@ -104,6 +126,9 @@ async function init() {
     const login =document.getElementById("login").textContent
     await createSkills(login)
     await createBooks(login)
+    await createExperience(login)
+    await createWorks(login)
+    await createEducation(login)
 }
 
 

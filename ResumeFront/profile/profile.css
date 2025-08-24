@@ -29,6 +29,16 @@ body {
   align-items: center; 
 }
 
+a {
+  font-weight: 550;
+  text-decoration: none;
+  color: var(--background-color-3);
+}
+
+a:hover {
+  color: var(--background-color-2);
+}
+
 p {
   margin: 10px 0; /* Отступы между параграфами */
 }

@@ -87,6 +87,66 @@ class Profile:
 
         return books
 
+    @staticmethod
+    def get_experience(login):
+
+        """Возвращает опыт работы пользователя"""
+
+        data = db.get_experience(login)
+
+        if data[0] is None:
+            return {'error': 'profile is invalid'}
+
+        experience = {}
+
+        for workplace in data:
+            experience[workplace[0]] = {
+                "company": workplace[0],
+                "more": workplace[1]
+            }
+
+        return experience
+
+    @staticmethod
+    def get_works(login):
+
+        """Возвращает опыт работы пользователя"""
+
+        data = db.get_works(login)
+
+        if data[0] is None:
+            return {'error': 'profile is invalid'}
+
+        works = {}
+
+        for work in data:
+            works[work[0]] = {
+                "name": work[0],
+                "more": work[1]
+            }
+
+        return works
+
+    @staticmethod
+    def get_education(login):
+
+        """Возвращает опыт работы пользователя"""
+
+        data = db.get_education(login)
+
+        if data[0] is None:
+            return {'error': 'profile is invalid'}
+
+        education = {}
+
+        for ed in data:
+            education[ed[0]] = {
+                "name": ed[0],
+                "more": ed[1]
+            }
+
+        return education
+
 
 
     @staticmethod
