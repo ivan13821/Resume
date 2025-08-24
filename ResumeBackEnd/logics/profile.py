@@ -52,8 +52,7 @@ class Profile:
 
         data = db.get_skills(login)
 
-        if data[0] is None:
-            return {'error':'profile is invalid'}
+        if not data: return {'error':'profile is invalid'}
 
         skills = {}
 
@@ -73,8 +72,7 @@ class Profile:
 
         data = db.get_books(login)
 
-        if data[0] is None:
-            return {'error':'profile is invalid'}
+        if not data: return {'error':'profile is invalid'}
 
         books = {}
 
@@ -94,8 +92,8 @@ class Profile:
 
         data = db.get_experience(login)
 
-        if data[0] is None:
-            return {'error': 'profile is invalid'}
+
+        if not data: return {'error':'profile is invalid'}
 
         experience = {}
 
@@ -114,8 +112,7 @@ class Profile:
 
         data = db.get_works(login)
 
-        if data[0] is None:
-            return {'error': 'profile is invalid'}
+        if not data: return {'error':'profile is invalid'}
 
         works = {}
 
@@ -134,8 +131,7 @@ class Profile:
 
         data = db.get_education(login)
 
-        if data[0] is None:
-            return {'error': 'profile is invalid'}
+        if not data: return {'error':'profile is invalid'}
 
         education = {}
 

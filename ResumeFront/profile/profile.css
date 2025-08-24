@@ -32,7 +32,7 @@ body {
 a {
   font-weight: 550;
   text-decoration: none;
-  color: var(--background-color-3);
+  color: var(--background-color-4);
 }
 
 a:hover {
@@ -61,13 +61,18 @@ h1, h2{
   margin-bottom: 30px;
 }
 
+#myData {
+  width: 500px;
+}
+
 #myVision {
   display: flex;
   color: var(--text-color);
-  margin-left: auto;
+  margin-left:50px;
   width: 500px;
   justify-content: right;
   flex-direction: column;
+  text-align: justify
 }
 
 .myDescription {
