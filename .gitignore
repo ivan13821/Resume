@@ -1,7 +1,8 @@
 .idea/
 
+**.venv/
+
 ResumeFront/node_modules/
-ResumeFront/profile_photo/
 
 ResumeBack/.venv/
 ResumeBack/.idea/
