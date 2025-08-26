@@ -7,11 +7,19 @@ from fastapi.responses import FileResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-import time
+import uvicorn
 
 app = FastAPI()
-front = Jinja2Templates(directory="/home/ivashka/Resume/ResumeFront")
-app.mount("/static", StaticFiles(directory="/home/ivashka/Resume/ResumeFront"), name="front")
+
+
+#Для локального запуска
+# path_to_start_project = "/home/ivashka/"
+
+#для докера
+path_to_start_project = "/app/"
+
+front = Jinja2Templates(directory=f"{path_to_start_project}ResumeFront")
+app.mount("/static", StaticFiles(directory=f"{path_to_start_project}ResumeFront"), name="front")
 
 
 app.add_middleware(
@@ -21,6 +29,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
 
 
 @app.get("/profile/{login}")
@@ -39,12 +49,16 @@ async def profile(login, request: Request):
     )
 
 
+
+
 @app.get("/profile_get_skills/{login}")
 async def profile(login, request: Request):
     """Передает информацию о профиле пользователя"""
 
     data = Profile.get_skills(login)
     return data
+
+
 
 
 @app.get("/profile_get_books/{login}")
@@ -55,6 +69,8 @@ async def profile(login, request: Request):
     return data
 
 
+
+
 @app.get("/profile_get_experience/{login}")
 async def profile(login, request: Request):
     """Передает информацию о профиле пользователя"""
@@ -63,12 +79,16 @@ async def profile(login, request: Request):
     return data
 
 
+
+
 @app.get("/profile_get_works/{login}")
 async def profile(login, request: Request):
     """Передает информацию о профиле пользователя"""
 
     data = Profile.get_works(login)
     return data
+
+
 
 @app.get("/profile_get_education/{login}")
 async def profile(login, request: Request):
@@ -88,3 +108,11 @@ async def help():
 
 
 
+
+if __name__ == "__main__":
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",
+        port=8000,
+        reload=True  # опционально: автоматическая перезагрузка при изменениях
+    )

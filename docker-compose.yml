@@ -1,0 +1,52 @@
+version: "3.9"
+services:
+  app:
+    build: .
+    container_name: my-app
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_HOST=postgres  # используем имя сервиса
+      - DB_NAME=resume
+      - DB_USER=ivashka
+      - DB_PASSWORD=saruman-344
+      - DB_PORT=5432
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  postgres:
+    image: postgres:13.3
+    container_name: postgres-db
+    environment:
+      POSTGRES_DB: "resume"
+      POSTGRES_USER: "ivashka"
+      POSTGRES_PASSWORD: "saruman-344"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./Resume.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ivashka -d resume"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+
+volumes:
+  postgres_data:
+
+networks:
+  app-network:
+    driver: bridge

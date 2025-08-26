@@ -1,6 +1,7 @@
 from configparser import ConfigParser
 
-config_filename = 'config.ini'
+
+config_filename = f'/app/ResumeBackEnd/config.ini'
 
 parser = ConfigParser()
 
@@ -22,6 +23,6 @@ def get_db_params(filename=config_filename, section='postgresql'):
         for param in params:
             db[param[0]] = param[1]
     else:
-        raise Exception(f'Ошибка подключения к БД! Секция {0} не найдена в файле {1}'.format(section, filename))
+        raise Exception(f'Ошибка подключения к БД! Секция {section} не найдена в файле {filename}'.format(section, filename))
 
     return db
