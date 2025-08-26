@@ -1,13 +1,12 @@
-version: "3.9"
 services:
   app:
     build: .
     container_name: my-app
     restart: unless-stopped
     ports:
-      - "8000:8000"
+      - ${PORT:-8000}:${PORT:-8000}
     environment:
-      - DB_HOST=postgres  # используем имя сервиса
+      - DB_HOST=postgres 
       - DB_NAME=resume
       - DB_USER=ivashka
       - DB_PASSWORD=saruman-344
