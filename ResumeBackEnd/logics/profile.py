@@ -1,7 +1,6 @@
 from DataBase.main import Database
 import base64
 
-
 db = Database()
 
 

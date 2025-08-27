@@ -1,4 +1,4 @@
-import json
+
 import os
 from fastapi import FastAPI, Request
 from logics.profile import Profile
@@ -7,19 +7,16 @@ from fastapi.responses import FileResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from fastapi import Response
 import uvicorn
+
+from get_env import get_start_patch
 
 app = FastAPI()
 
 
-#Для локального запуска
-# path_to_start_project = "/home/ivashka/"
-
-#для докера
-path_to_start_project = "/app/"
-
-front = Jinja2Templates(directory=f"{path_to_start_project}ResumeFront")
-app.mount("/static", StaticFiles(directory=f"{path_to_start_project}ResumeFront"), name="front")
+front = Jinja2Templates(directory=f"{get_start_patch()}ResumeFront")
+app.mount("/static", StaticFiles(directory=f"{get_start_patch()}ResumeFront"), name="front")
 
 
 app.add_middleware(
@@ -30,6 +27,20 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+
+@app.get("/favicon.ico")
+async def get_favicon():
+
+    """Функция для получения фавикона"""
+
+    path = f"{get_start_patch()}/favicon/favicon.ico"
+
+    if not os.path.exists(path):
+        print(f"Файл не найден: {os.path.abspath(path)}")
+        return Response(status_code=204)
+
+    return FileResponse(path)
 
 
 
@@ -45,7 +56,12 @@ async def profile(login, request: Request):
     )
     return front.TemplateResponse(
         "profile/profile.html",
-        {"request": request, "photo_url":f"/static/profile_photo/{login}.jpg", **data}
+        {
+            "request": request,
+            "url": f"http://{os.getenv('HOST', '0.0.0.0')}:{os.getenv('PORT', 8000)}/",
+            "photo_url": f"/static/profile_photo/{login}.jpg",
+            **data
+        }
     )
 
 
@@ -106,13 +122,10 @@ async def help():
 
 
 
-
-
-
 if __name__ == "__main__":
     uvicorn.run(
         "main:app",
-        host="0.0.0.0",
-        port=int(os.getenv("PORT", 8000)),
+        host=os.getenv("HOST", "0.0.0.0"),
+        port = int(os.getenv("PORT", 8000)),
         reload=True  # опционально: автоматическая перезагрузка при изменениях
     )

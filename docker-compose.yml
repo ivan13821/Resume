@@ -11,6 +11,8 @@ services:
       - DB_USER=ivashka
       - DB_PASSWORD=saruman-344
       - DB_PORT=5432
+      - PORT=${PORT}
+      - HOST=${HOST}
     depends_on:
       postgres:
         condition: service_healthy

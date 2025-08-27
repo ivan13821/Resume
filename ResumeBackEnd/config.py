@@ -1,7 +1,7 @@
 from configparser import ConfigParser
+from get_env import get_start_patch
 
-
-config_filename = f'/app/ResumeBackEnd/config.ini'
+config_path = f'{get_start_patch()}ResumeBackEnd/config.ini'
 
 parser = ConfigParser()
 
@@ -14,8 +14,10 @@ parser = ConfigParser()
 """
 
 
-def get_db_params(filename=config_filename, section='postgresql'):
+def get_db_params(filename=config_path, section='postgresql'):
     parser.read(filename, "utf-8")
+
+    print(filename)
 
     db = {}
     if parser.has_section(section):
