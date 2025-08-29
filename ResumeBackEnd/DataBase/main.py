@@ -1,5 +1,5 @@
 import psycopg2
-from config import get_db_params
+from config.config import get_db_params
 
 
 def singleton(class_):

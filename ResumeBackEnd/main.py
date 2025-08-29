@@ -10,13 +10,13 @@ from fastapi.staticfiles import StaticFiles
 from fastapi import Response
 import uvicorn
 
-from get_env import get_start_patch
+from config.env import Env
 
 app = FastAPI()
 
 
-front = Jinja2Templates(directory=f"{get_start_patch()}ResumeFront")
-app.mount("/static", StaticFiles(directory=f"{get_start_patch()}ResumeFront"), name="front")
+front = Jinja2Templates(directory=f"{Env.start_patch()}ResumeFront")
+app.mount("/static", StaticFiles(directory=f"{Env.start_patch()}ResumeFront"), name="front")
 
 
 app.add_middleware(
@@ -34,7 +34,7 @@ async def get_favicon():
 
     """Функция для получения фавикона"""
 
-    path = f"{get_start_patch()}/favicon/favicon.ico"
+    path = f"{Env.start_patch()}/favicon/favicon.ico"
 
     if not os.path.exists(path):
         print(f"Файл не найден: {os.path.abspath(path)}")
@@ -125,7 +125,7 @@ async def help():
 if __name__ == "__main__":
     uvicorn.run(
         "main:app",
-        host=os.getenv("HOST", "0.0.0.0"),
-        port = int(os.getenv("PORT", 8000)),
-        reload=True  # опционально: автоматическая перезагрузка при изменениях
+        host=Env.host(),
+        port = Env.port(),
+        reload=False
     )
