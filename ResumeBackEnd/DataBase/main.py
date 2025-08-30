@@ -21,6 +21,10 @@ class Database:
         self.cur = None
         self.connect_to_db()
 
+
+
+
+
     def connect_to_db(self):
         params = get_db_params()
         print('Подключаюсь к PostgreSQL...')
@@ -31,6 +35,7 @@ class Database:
             print(f'Успешно подключен!')
         except Exception as error:
             print(error)
+
 
 
 
@@ -48,6 +53,7 @@ class Database:
             self.cur.execute(query, params)
 
 
+
     # Работа с БД ----------------------------------------------------------------------------------------------
 
 
@@ -62,21 +68,30 @@ class Database:
 
 
 
+
+
     def get_skills(self, login):
 
         """Возвращает скилы пользователя"""
 
-        self.execute_query(f"select skill, level, more from skills where login='{login}'")
+        self.execute_query(f"select skill, more from skills where login='{login}'")
 
         return self.cur.fetchall()
+
+
+
+
 
     def get_books(self, login):
 
         """Возвращает книги прочитанные пользователем пользователя"""
 
-        self.execute_query(f"select name, author, more from books where login='{login}'")
+        self.execute_query(f"select name, more from books where login='{login}'")
 
         return self.cur.fetchall()
+
+
+
 
 
     def get_experience(self, login):
@@ -87,6 +102,10 @@ class Database:
 
         return self.cur.fetchall()
 
+
+
+
+
     def get_works(self, login):
 
         """Возвращает опыт работы пользователя"""
@@ -94,6 +113,10 @@ class Database:
         self.execute_query(f"select name, more from my_works where login='{login}'")
 
         return self.cur.fetchall()
+
+
+
+
 
     def get_education(self, login):
 

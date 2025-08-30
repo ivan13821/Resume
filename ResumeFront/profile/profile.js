@@ -1,13 +1,15 @@
 import { Api as api } from "../api/apiMain.js"
 
-function checkType(data) {
-    if (Array.isArray(data)) {
-        return 'array';
-    } else if (typeof data === 'object' && data !== null) {
-        return 'object';
-    } else {
-        return 'other';
-    }
+
+
+function noneVisible(containerId) {
+    const container = document.getElementById(containerId);
+    container.style.visibility = 'hidden';
+    container.style.opacity = '0';
+    container.style.pointerEvents = 'none';
+    container.style.height = '0px';
+    container.style.margin = '0px';
+    container.style.padding = '0px';
 }
 
 
@@ -85,31 +87,71 @@ async function createButtons(containerId, data) {
 // функция получает данные по навыкам и делегирует отрисовку кнопок
 async function createSkills(login) {
     let data = await api.getData(login, "profile_get_skills/");
+
+    if ("error" === Object.keys(data)[0]) {
+        noneVisible('big-skills-container')
+    }
+
     createButtons('skills-container', data, 'Навыки');
 }
+
+
+
+
 
 // функция получает данные по прочитанным книгам и делегирует отрисовку кнопок
 async function createBooks(login) {
     let data = await api.getData(login, "profile_get_books/");
+
+    if ("error" === Object.keys(data)[0]) {
+        noneVisible('big-books-container')
+    }
+    
     createButtons('books-container', data);
 }
+
+
+
+
 
 // функция получает данные по опыту пользователя и делегирует отрисовку кнопок
 async function createExperience(login) {
     let data = await api.getData(login, "profile_get_experience/");
+
+    if ("error" === Object.keys(data)[0]) {
+        noneVisible('big-experience-container')
+    }
+
     createButtons('experience-container', data);
 }
+
+
+
+
 
 // функция получает данные по пет-проектам и делегирует отрисовку кнопок
 async function createWorks(login) {
     let data = await api.getData(login, "profile_get_works/");
+
+    if ("error" === Object.keys(data)[0]) {
+        noneVisible('big-works-container')
+    }
+
     createButtons('works-container', data);
 }
+
+
+
 
 
 // функция получает данные по образованию и делегирует отрисовку кнопок
 async function createEducation(login) {
     let data = await api.getData(login, "profile_get_education/");
+
+    if ("error" === Object.keys(data)[0]) {
+        noneVisible('big-education-container')
+    }
+
     createButtons('education-container', data);
 }
 

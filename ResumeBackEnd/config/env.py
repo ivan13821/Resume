@@ -1,5 +1,8 @@
 import os
 
+
+
+
 class Env:
     """ Класс для получения переменных окружения """
 
@@ -7,8 +10,8 @@ class Env:
     def start_patch() -> str:
         """Отдает стартовый путь до папки ResumeBackEnd не включая ее"""
 
-        this_file = os.path.abspath(__file__).split('/')
-        path_to_start_project = '/'.join(this_file[0:this_file.index("ResumeBackEnd")]) + "/"
+        this_file = os.path.abspath(__file__).split('/') #Путь до этого файла
+        path_to_start_project = '/'.join(this_file[0:this_file.index("ResumeBackEnd")]) + "/" #Путь до начала проекта
 
         return path_to_start_project
 

@@ -152,5 +152,18 @@ name, more, login
 --drop table books;
 
 
+insert into profile (
+login, name, surname, about_human, date_of_bithday, phone, mail, tg_login
+) values (
+'ninka', 'Нина', 'Шишкина', 'Я творческая личность', '1980-04-06', '89222560904', 'ninka-sardinka@mail.ru', '@ninel'
+);
+
+
+insert into experience (
+company, more, login
+) values 
+('Маникюр', '<p>Занимаюсь маникюром более 10 лет!</p>
+<p>За это время изучила множество техник и ...</p>', 'ninka');
+
 
 

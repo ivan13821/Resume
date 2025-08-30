@@ -1,7 +1,7 @@
 from DataBase.main import Database
 import base64
 
-db = Database()
+database = Database() # База данных
 
 
 
@@ -19,7 +19,7 @@ class Profile:
 
         """Возвращает данные о профиле в формате JSON"""
 
-        data = db.get_profile(login)
+        data = database.get_profile(login)
 
         if not data: return {'error':'profile is invalid'}
 
@@ -45,102 +45,75 @@ class Profile:
 
 
     @staticmethod
+    def data_formater(data) -> dict:
+        """ Форматирует данные из БД в json """
+
+        if not data: return {'error': 'profile is invalid'}
+
+        mass = {}
+
+        for element in data:
+            mass[element[0]] = {
+                "name": element[0],
+                "more": element[1]
+            }
+
+        return mass
+
+
+
+
+
+
+
+    @staticmethod
     def get_skills(login):
 
         """Возвращает скилы полльзовтеля в формате JSON"""
 
-        data = db.get_skills(login)
+        return Profile.data_formater(database.get_skills(login))
 
-        if not data: return {'error':'profile is invalid'}
 
-        skills = {}
 
-        for skill in data:
-            skills[skill[0]] = {
-                'level':skill[1],
-                'more':skill[2]
-            }
-
-        return skills
 
 
     @staticmethod
     def get_books(login):
-
         """Возвращает книги прочитанные пользователем"""
 
-        data = db.get_books(login)
+        return Profile.data_formater(database.get_books(login))
 
-        if not data: return {'error':'profile is invalid'}
 
-        books = {}
 
-        for book in data:
-            books[book[0]]= {
-                    "name":book[0],
-                    "author":book[1],
-                    "more":book[2]
-                 }
 
-        return books
 
     @staticmethod
     def get_experience(login):
-
         """Возвращает опыт работы пользователя"""
 
-        data = db.get_experience(login)
+        return Profile.data_formater(database.get_experience(login))
 
 
-        if not data: return {'error':'profile is invalid'}
 
-        experience = {}
 
-        for workplace in data:
-            experience[workplace[0]] = {
-                "company": workplace[0],
-                "more": workplace[1]
-            }
-
-        return experience
 
     @staticmethod
     def get_works(login):
-
         """Возвращает опыт работы пользователя"""
 
-        data = db.get_works(login)
+        return Profile.data_formater(database.get_works(login))
 
-        if not data: return {'error':'profile is invalid'}
 
-        works = {}
 
-        for work in data:
-            works[work[0]] = {
-                "name": work[0],
-                "more": work[1]
-            }
 
-        return works
 
     @staticmethod
     def get_education(login):
-
         """Возвращает опыт работы пользователя"""
 
-        data = db.get_education(login)
+        return Profile.data_formater(database.get_education(login))
 
-        if not data: return {'error':'profile is invalid'}
 
-        education = {}
-
-        for ed in data:
-            education[ed[0]] = {
-                "name": ed[0],
-                "more": ed[1]
-            }
-
-        return education
 
 
 
