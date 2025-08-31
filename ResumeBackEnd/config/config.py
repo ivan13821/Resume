@@ -15,6 +15,8 @@ parser = ConfigParser()
 
 
 def get_db_params(filename=config_path, section='postgresql'):
+    """Проверяет наличие postgres в файле config.ini"""
+
     parser.read(filename, "utf-8")
 
     db = {}

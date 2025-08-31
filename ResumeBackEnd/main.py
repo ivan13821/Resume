@@ -32,7 +32,6 @@ app.add_middleware(
 
 @app.get("/favicon.ico")
 async def get_favicon():
-
     """Функция для получения фавикона"""
 
     path = f"{Env.start_patch()}ResumeBackEnd/favicon/favicon.ico"
@@ -48,7 +47,6 @@ async def get_favicon():
 
 @app.post("/profile/{login}")
 async def profile(login: str):
-
     """Передает всю информацию о пользователе"""
 
     pass
@@ -59,7 +57,6 @@ async def profile(login: str):
 
 @app.get("/profile/{login}")
 async def profile(login: str, request: Request):
-
     """Передает информацию о профиле пользователя"""
 
     data = Profile.get_profile(login) # получение профиля пользователя по логину
@@ -85,7 +82,6 @@ async def profile(login: str, request: Request):
 
 @app.get("/profile_get_skills/{login}")
 async def profile(login: str):
-
     """Передает информацию о профиле пользователя"""
 
     data = Profile.get_skills(login) # Получение навыков
@@ -96,7 +92,6 @@ async def profile(login: str):
 
 @app.get("/profile_get_books/{login}")
 async def profile(login: str):
-
     """Передает информацию о профиле пользователя"""
 
     data = Profile.get_books(login)
@@ -107,7 +102,6 @@ async def profile(login: str):
 
 @app.get("/profile_get_experience/{login}")
 async def profile(login: str):
-
     """Передает информацию о навыках пользователя"""
 
     data = Profile.get_experience(login)
@@ -118,7 +112,6 @@ async def profile(login: str):
 
 @app.get("/profile_get_works/{login}")
 async def profile(login: str):
-
     """Передает информацию о опыте работы пользователя"""
 
     data = Profile.get_works(login)
@@ -128,7 +121,6 @@ async def profile(login: str):
 
 @app.get("/profile_get_education/{login}")
 async def profile(login):
-
     """Передает информацию о профиле пользователя"""
 
     data = Profile.get_education(login)
@@ -138,7 +130,6 @@ async def profile(login):
 
 @app.get("/help")
 async def help():
-
     """Передает информацию для помощи, а также основные правила и логику"""
 
     return Help.get_rules()

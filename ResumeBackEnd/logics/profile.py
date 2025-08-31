@@ -16,7 +16,6 @@ class Profile:
 
     @staticmethod
     def get_profile(login):
-
         """Возвращает данные о профиле в формате JSON"""
 
         data = database.get_profile(login)
@@ -68,7 +67,6 @@ class Profile:
 
     @staticmethod
     def get_skills(login):
-
         """Возвращает скилы полльзовтеля в формате JSON"""
 
         return Profile.data_formater(database.get_skills(login))
@@ -119,7 +117,6 @@ class Profile:
 
     @staticmethod
     def get_all(login):
-
         """Возвращает все данные по логину, используется при загрузке страницы"""
 
         profile, skills = Profile.get_profile(login), Profile.get_skills(login)

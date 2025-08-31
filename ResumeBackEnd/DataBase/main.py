@@ -3,6 +3,7 @@ from config.config import get_db_params
 
 
 def singleton(class_):
+    """Реализаци паттерна одиночка"""
     instances = {}
     def getinstance(*args, **kwargs):
         if class_ not in instances:
@@ -59,7 +60,6 @@ class Database:
 
 
     def get_profile(self, login):
-
         """Отдает данные о профиле пользователя по логину"""
 
         self.execute_query(f"select * from profile where login='{login}'")
@@ -71,7 +71,6 @@ class Database:
 
 
     def get_skills(self, login):
-
         """Возвращает скилы пользователя"""
 
         self.execute_query(f"select skill, more from skills where login='{login}'")
@@ -83,7 +82,6 @@ class Database:
 
 
     def get_books(self, login):
-
         """Возвращает книги прочитанные пользователем пользователя"""
 
         self.execute_query(f"select name, more from books where login='{login}'")
@@ -95,7 +93,6 @@ class Database:
 
 
     def get_experience(self, login):
-
         """Возвращает опыт работы пользователя"""
 
         self.execute_query(f"select company, more from experience where login='{login}'")
@@ -107,7 +104,6 @@ class Database:
 
 
     def get_works(self, login):
-
         """Возвращает опыт работы пользователя"""
 
         self.execute_query(f"select name, more from my_works where login='{login}'")
@@ -119,9 +115,13 @@ class Database:
 
 
     def get_education(self, login):
-
         """Возвращает опыт работы пользователя"""
 
         self.execute_query(f"select name, more from education where login='{login}'")
 
         return self.cur.fetchall()
+
+
+
+
+
