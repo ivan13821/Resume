@@ -9,6 +9,8 @@
   --background-color-2: #210e41;
   --background-color-3: #3f1188;
   --background-color-4: #5516b9;
+  --size-about-me: 1500px;
+  --size-text-about-me: 500px;
 }
 
 
@@ -53,7 +55,7 @@ h1, h2{
   top: 50px;
   display: flex;
   top: 30px;
-  width: 1500px;
+  width: var(--size-about-me);
   height: 540px;
   border: 3px solid var(--border-color);
   border-radius: 30px;
@@ -62,18 +64,73 @@ h1, h2{
   margin-bottom: 30px;
 }
 
+@media(max-width: 1200px){
+  :root {
+    --size-about-me: 1000px
+  }
+}
+@media(max-width: 1100px){
+  :root {
+    --size-about-me: 900px;
+    --size-text-about-me: 80%;
+  }
+  #aboutMe {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    align-items: center;
+  }
+  #myPhoto {
+    margin-bottom: 15px;
+  }
+  #myData {
+    margin-bottom: 15px;
+  }
+  #myVision {
+    margin-bottom: 15px;
+  }
+}
+@media(max-width: 1000px){
+  :root {
+    --size-about-me: 800px;
+    --size-text-about-me: 80%;
+  }
+}
+@media(max-width: 900px){
+  :root {
+    --size-about-me: 700px
+  }
+}
+@media(max-width: 800px){
+  :root {
+    --size-about-me: 600px
+  }
+}
+@media(max-width: 700px){
+  :root {
+    --size-about-me: 500px
+  }
+}
+@media(max-width: 600px){
+  :root {
+    --size-about-me: 400px
+  }
+  .container {
+    width: 330px;
+  }
+}
+
 #myData {
-  width: 500px;
+  width: var(--size-text-about-me)
 }
 
 #myVision {
   display: flex;
   color: var(--text-color);
-  margin-left:50px;
-  width: 500px;
+  width: var(--size-text-about-me);
   justify-content: right;
   flex-direction: column;
-  text-align: justify
+  text-align: justify;
 }
 
 .myDescription {
@@ -211,7 +268,7 @@ h1, h2{
 
 .all-container {
   display: flex;
-  width: 1500px;
+  width: var(--size-about-me);
   border: 3px solid var(--border-color);
   border-radius: 30px;
   padding: 20px; 
@@ -223,7 +280,7 @@ h1, h2{
 
 .container-level2{
   display: flex;
-  width: 1500px;
+  width: var(--size-about-me);
   background: rgb(36, 36, 36); 
   flex-wrap: wrap;
   align-content: space-around;

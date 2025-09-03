@@ -2,6 +2,8 @@
 
 **.venv/
 
+**config.ini
+
 ResumeFront/node_modules/
 
 ResumeBack/.venv/
