@@ -117,8 +117,57 @@ h1, h2{
   }
   .container {
     width: 330px;
+    margin: 0px;
   }
 }
+
+@media(max-width: 500px){
+  :root {
+    --size-about-me: 300px
+  }
+
+  .container {
+    width: 280px;
+    margin: 10px !important; 
+  }
+
+  .headers {
+    font-size: 30px;
+  }
+
+  #name_surname {
+    font-size: 30px;
+    margin-bottom: -20px;
+  }
+
+  #myPhoto {
+    width: 245px !important;
+    height: 350px !important;
+  }
+
+  p {
+    font-size: 17px;
+  }
+
+  #login, #date_of_bithday, #phone, #mail, #tg_login {
+    font-size: 18px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  #myVisionHeader {
+    margin-bottom: -20px;
+  }
+
+  h2 {
+    font-size: 21px;
+  }
+
+
+}
+
 
 #myData {
   width: var(--size-text-about-me)
@@ -172,7 +221,7 @@ h1, h2{
 /* --------------------------------------------------------------------------------------------------- */
 
 
-.modal-window {
+.modal-window{
   position: fixed;
   background-color: rgba(255, 255, 255, 0.25);
   font-size: 18px;
@@ -192,7 +241,9 @@ h1, h2{
     pointer-events: auto;
   }
   & > div {
-    width: 400px;
+    width: 80vw;
+    max-width: 400px;
+    min-width: 280px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -229,13 +280,6 @@ h1, h2{
 }
 
 /* Demo Styles */
-
-.container {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
 
 .modal-window {
   & > div {

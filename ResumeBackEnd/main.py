@@ -71,7 +71,7 @@ async def profile(login: str, request: Request):
         "profile/profile.html",
         {
             "request": request,
-            "url": f"http://{os.getenv('HOST', '0.0.0.0')}:{os.getenv('PORT', 8000)}/",
+            "url": f"http://{Env.back_ip()}:{Env.port()}/",
             "photo_url": f"/static/profile_photo/{login}.jpg",
             **data
         }
@@ -112,7 +112,7 @@ async def profile(login: str):
 
 @app.get("/profile_get_works/{login}")
 async def profile(login: str):
-    """Передает информацию о опыте работы пользователя"""
+    """Передает информацию об опыте работы пользователя"""
 
     data = Profile.get_works(login)
     return data

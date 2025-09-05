@@ -29,3 +29,17 @@ class Env:
 
         return int(os.getenv("PORT", 8000))
 
+
+
+    @staticmethod
+    def database_host() -> str:
+        """Отдает значение хоста для подключения к базе данных"""
+
+        return os.getenv("DATABASE_HOST", "localhost")
+
+    @staticmethod
+    def back_ip() -> str:
+        """"""
+
+        return os.getenv("BACK_IP", "localhost")
+

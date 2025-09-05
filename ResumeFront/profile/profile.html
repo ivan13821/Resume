@@ -13,7 +13,7 @@
         <img src="{{ photo_url }}" alt="Фото пользователя" id="myPhoto">
         <div id="myData" class="textAboutMe">
             <p style="display: none;" id="url">{{ url }}</p>
-            <h1 class="headers">{{ name }} {{ surname }}</h1>
+            <h1 class="headers" id="name_surname">{{ name }} {{ surname }}</h1>
             <h2>Мои данные</h2>
             <p>Мой ник: <span class="highlight" id="login">{{ login }}</span></p>
             <p>Дата рождения: <span class="highlight" id="date_of_bithday">{{ date_of_bithday }}</span></p>
@@ -22,7 +22,7 @@
             <p>Логин в тг: <span class="highlight" id="tg_login">{{ tg_login }}</span></p>
         </div>
         <div id="myVision" class="textAboutMe">
-            <h1>Мои взгляды</h1>
+            <h1 id="myVisionHeader">Мои взгляды</h1>
             <br>
             <p>{{ about_profile}}</p>
         </div>
